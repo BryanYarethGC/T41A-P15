@@ -35,9 +35,9 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION total_depEmpleados(id INT)
+CREATE OR REPLACE FUNCTION total_depEmpleados(dep INT)
 RETURNS INT AS $$
 BEGIN
-    RETURN (SELECT COUNT(*) FROM empleado WHERE id_dep=id);
+    RETURN (SELECT COUNT(*) FROM empleado WHERE id_dep=dep);
 END;
 $$ LANGUAGE plpgsql;
