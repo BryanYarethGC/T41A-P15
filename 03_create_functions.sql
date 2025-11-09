@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION calcular_desc(monto NUMERIC,descuento NUMERIC)
+CREATE OR REPLACE FUNCTION calcular_desc(monto NUMERIC, descuento NUMERIC)
 RETURNS NUMERIC AS $$
 BEGIN
     IF descuento<=0 or descuento>=1 THEN
