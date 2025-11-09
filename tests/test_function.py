@@ -11,12 +11,11 @@ def test_descuento():
   conn.autocommit = False
   try:
       cur = conn.cursor()
-      #Se obtienen los registros que devulve el procedure
       query="SELECT calcular_desc(%s,%s)"
-      cur.execute(query,(50,1.5));
+      cur.execute(query,(50.0,1.5));
       result=cur.fetchone()[0];
       assert result is None;
-      cur.execute(query,(50,0.5));
+      cur.execute(query,(50.0,0.5));
       result=cur.fetchone()[0];
       assert result==25.0;
       conn.commit()
@@ -39,7 +38,6 @@ def test_descuento():
     conn.autocommit = False
     try:
         cur = conn.cursor()
-        #Se obtienen los registros que devulve el procedure
         query="SELECT validar_correo(%s)"
         cur.execute(query,('bryangamez',));
         result=cur.fetchone()[0];
@@ -67,7 +65,6 @@ def test_stock():
     conn.autocommit = False
     try:
         cur = conn.cursor()
-        #Se obtienen los registros que devulve el procedure
         query="SELECT * from stock_menor(%s)"
         cur.execute(query,(5,));
         result=cur.fetchall();
@@ -94,11 +91,10 @@ def test_fecha():
     conn.autocommit = False
     try:
         cur = conn.cursor()
-        #Se obtienen los registros que devulve el procedure
         query="SELECT dia_semana(%s)"
         cur.execute(query,('2025-11-08',));
         result=cur.fetchone()[0];
-        assert result=='SABADO'
+        assert result=='SATURDAY'
         conn.commit()
     except Exception as e:
         raise e
@@ -119,7 +115,6 @@ def test_empleados():
     conn.autocommit = False
     try:
         cur = conn.cursor()
-        #Se obtienen los registros que devulve el procedure
         query="SELECT total_depEmpleados(%s)"
         cur.execute(query,(1,));
         result=cur.fetchone()[0];
